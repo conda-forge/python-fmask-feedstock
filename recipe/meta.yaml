@@ -1,14 +1,13 @@
-{% set version = "0.4.3" %}
+{% set version = "0.4.4" %}
 
 package:
   name: python-fmask
   version: {{ version }}
 
 source:
-  # we use the .zip as it has the .bat file launcher in it for Windows
-  fn: python-fmask-{{ version }}.zip
-  url: https://bitbucket.org/chchrsc/python-fmask/downloads/python-fmask-{{ version }}.zip
-  sha256: 8f74896f6dae1f77e1a5ca3efe8308846090f938d1e54d219226bc7634f58080
+  fn: python-fmask-{{ version }}.tar.gz
+  url: https://bitbucket.org/chchrsc/python-fmask/downloads/python-fmask-{{ version }}.tar.gz
+  sha256: be57a62a2ee08d90fd3d63b7388e3563e70d2016016f3d0ed3b067411431a0e2
 
 build:
   number: 0
@@ -55,3 +54,4 @@ extra:
     - gillins
     - robintw
     - danclewley
+    - neilflood

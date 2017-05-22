@@ -10,7 +10,7 @@ source:
   sha256: be57a62a2ee08d90fd3d63b7388e3563e70d2016016f3d0ed3b067411431a0e2
 
 build:
-  number: 0
+  number: 1
   script: python setup.py install
 
 requirements:
@@ -18,13 +18,13 @@ requirements:
     - python
     - numpy x.x
     - scipy
-    - gdal 2.1.*
+    - gdal 2.2.*
     - rios
   run:
     - python
     - numpy x.x
     - scipy
-    - gdal 2.1.*
+    - gdal 2.2.*
     - rios
     
 test:

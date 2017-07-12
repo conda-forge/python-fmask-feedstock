@@ -1,4 +1,4 @@
-{% set version = "0.4.4" %}
+{% set version = "0.4.5" %}
 
 package:
   name: python-fmask
@@ -7,10 +7,10 @@ package:
 source:
   fn: python-fmask-{{ version }}.tar.gz
   url: https://bitbucket.org/chchrsc/python-fmask/downloads/python-fmask-{{ version }}.tar.gz
-  sha256: be57a62a2ee08d90fd3d63b7388e3563e70d2016016f3d0ed3b067411431a0e2
+  sha256: 6c1075f079efd5622e6669cff8ca1f1baedebeef4aa8f937b4cfb0b4ed141581
 
 build:
-  number: 1
+  number: 0
   script: python setup.py install
 
 requirements:

@@ -16,17 +16,18 @@ build:
 requirements:
   build:
     - python
-    - numpy x.x
-    - scipy
-    - gdal 2.2.*
-    - rios
+    - numpy 1.7.*  # [py27]
+    - numpy 1.9.*  # [py35]
+    - numpy 1.11.*  # [py36]
   run:
     - python
-    - numpy x.x
+    - numpy >=1.7  # [py27]
+    - numpy >=1.9  # [py35]
+    - numpy >=1.11  # [py36]
     - scipy
-    - gdal 2.2.*
+    - gdal
     - rios
-    
+
 test:
   imports:
     - fmask.fmask
@@ -43,10 +44,14 @@ test:
     - fmask_expandWildcards fmask_usgsLandsatSaturationMask.py -h  # [win]
     - fmask_expandWildcards fmask_usgsLandsatStacked.py -h  # [win]
     - fmask_expandWildcards fmask_usgsLandsatTOA.py -h  # [win]
+    - conda inspect linkages -p $PREFIX python-fmask  # [not win]
+    - conda inspect objects -p $PREFIX python-fmask  # [osx]
 
 about:
   home: http://pythonfmask.org
   license: GPL-3.0
+  # Not present in the tarball.
+  # license_file: LICENSE.txt
   summary: Implementation in Python of the cloud and shadow algorithms known collectively as Fmask.
 
 extra:

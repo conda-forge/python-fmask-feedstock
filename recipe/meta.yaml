@@ -11,7 +11,7 @@ source:
 
 build:
   number: 0
-  script: python setup.py install
+  script: "{{ PYTHON }} setup.py install"
 
 requirements:
   build:
@@ -48,8 +48,9 @@ test:
 about:
   home: http://pythonfmask.org
   license: GPL-3.0
-  # Not present in the tarball.
+  # Not present in the tarball - will be in next release.
   # license_file: LICENSE.txt
+  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE.txt'
   summary: Implementation in Python of the cloud and shadow algorithms known collectively as Fmask.
 
 extra:

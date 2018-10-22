@@ -5,13 +5,12 @@ package:
   version: {{ version }}
 
 source:
-  fn: python-fmask-{{ version }}.tar.gz
   url: https://bitbucket.org/chchrsc/python-fmask/downloads/python-fmask-{{ version }}.tar.gz
   sha256: a8199aa1b9ca52e7979abcdc9245360b96d1710e48e8d97b6c71d5712eea888d
 
 build:
   number: 0
-  script: "{{ PYTHON }} setup.py install"
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv"
 
 requirements:
   build:
@@ -42,8 +41,6 @@ test:
     - fmask_expandWildcards fmask_usgsLandsatSaturationMask.py -h  # [win]
     - fmask_expandWildcards fmask_usgsLandsatStacked.py -h  # [win]
     - fmask_expandWildcards fmask_usgsLandsatTOA.py -h  # [win]
-    - conda inspect linkages -p $PREFIX python-fmask  # [not win]
-    - conda inspect objects -p $PREFIX python-fmask  # [osx]
 
 about:
   home: http://pythonfmask.org

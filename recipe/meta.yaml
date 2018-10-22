@@ -1,29 +1,27 @@
-{% set version = "0.4.5" %}
+{% set version = "0.5.0" %}
 
 package:
   name: python-fmask
   version: {{ version }}
 
 source:
-  fn: python-fmask-{{ version }}.tar.gz
   url: https://bitbucket.org/chchrsc/python-fmask/downloads/python-fmask-{{ version }}.tar.gz
-  sha256: 6c1075f079efd5622e6669cff8ca1f1baedebeef4aa8f937b4cfb0b4ed141581
+  sha256: a8199aa1b9ca52e7979abcdc9245360b96d1710e48e8d97b6c71d5712eea888d
 
 build:
-  number: 1
-  script: python setup.py install
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv"
 
 requirements:
   build:
+    - {{ compiler('c') }}
+  host:
     - python
-    - numpy 1.7.*  # [py27]
-    - numpy 1.9.*  # [py35]
-    - numpy 1.11.*  # [py36]
+    - pip
+    - numpy
   run:
     - python
-    - numpy >=1.7  # [py27]
-    - numpy >=1.9  # [py35]
-    - numpy >=1.11  # [py36]
+    - {{ pin_compatible('numpy') }}
     - scipy
     - gdal
     - rios
@@ -44,8 +42,6 @@ test:
     - fmask_expandWildcards fmask_usgsLandsatSaturationMask.py -h  # [win]
     - fmask_expandWildcards fmask_usgsLandsatStacked.py -h  # [win]
     - fmask_expandWildcards fmask_usgsLandsatTOA.py -h  # [win]
-    - conda inspect linkages -p $PREFIX python-fmask  # [not win]
-    - conda inspect objects -p $PREFIX python-fmask  # [osx]
 
 about:
   home: http://pythonfmask.org

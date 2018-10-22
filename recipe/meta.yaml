@@ -46,8 +46,8 @@ test:
 about:
   home: http://pythonfmask.org
   license: GPL-3.0
-  # Not present in the tarball.
-  # license_file: LICENSE.txt
+  # Not present in the tarball - will be in next release.
+  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE.txt'
   summary: Implementation in Python of the cloud and shadow algorithms known collectively as Fmask.
 
 extra:

@@ -18,7 +18,8 @@ requirements:
   host:
     - python
     - pip
-    - numpy
+    - numpy  # [not win]
+    - numpy 1.14.*  # [win]
   run:
     - python
     - {{ pin_compatible('numpy') }}

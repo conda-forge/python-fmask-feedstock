@@ -1,4 +1,4 @@
-{% set version = "0.5.0" %}
+{% set version = "0.5.1" %}
 
 package:
   name: python-fmask
@@ -6,11 +6,18 @@ package:
 
 source:
   url: https://bitbucket.org/chchrsc/python-fmask/downloads/python-fmask-{{ version }}.tar.gz
-  sha256: a8199aa1b9ca52e7979abcdc9245360b96d1710e48e8d97b6c71d5712eea888d
+  sha256: 6b774c3fc99f6cd9e13a027e9f18cdafee86f861302c6ebf5b20374e0be6d699
 
 build:
   number: 0
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv"
+  entry_points:
+    - fmask_sentinel2makeAnglesImage.py = fmask.cmdline.fmask_sentinel2makeAnglesImage:mainRoutine
+    - fmask_sentinel2Stacked.py = fmask.cmdline.fmask_sentinel2Stacked:mainRoutine
+    - fmask_usgsLandsatMakeAnglesImage.py = fmask.cmdline.fmask_usgsLandsatMakeAnglesImage:mainRoutine
+    - fmask_usgsLandsatSaturationMask.py = fmask.cmdline.fmask_usgsLandsatSaturationMask:mainRoutine
+    - fmask_usgsLandsatStacked.py = fmask.cmdline.fmask_usgsLandsatStacked:mainRoutine
+    - fmask_usgsLandsatTOA.py = fmask.cmdline.fmask_usgsLandsatTOA:mainRoutine
 
 requirements:
   build:
@@ -31,24 +38,17 @@ test:
   imports:
     - fmask.fmask
   commands:
-    - fmask_sentinel2makeAnglesImage.py -h  # [unix]
-    - fmask_sentinel2Stacked.py -h  # [unix]
-    - fmask_usgsLandsatMakeAnglesImage.py -h  # [unix]
-    - fmask_usgsLandsatSaturationMask.py -h  # [unix]
-    - fmask_usgsLandsatStacked.py -h  # [unix]
-    - fmask_usgsLandsatTOA.py -h  # [unix]
-    - fmask_expandWildcards fmask_sentinel2makeAnglesImage.py -h  # [win]
-    - fmask_expandWildcards fmask_sentinel2Stacked.py -h  # [win]
-    - fmask_expandWildcards fmask_usgsLandsatMakeAnglesImage.py -h  # [win]
-    - fmask_expandWildcards fmask_usgsLandsatSaturationMask.py -h  # [win]
-    - fmask_expandWildcards fmask_usgsLandsatStacked.py -h  # [win]
-    - fmask_expandWildcards fmask_usgsLandsatTOA.py -h  # [win]
+    - fmask_sentinel2makeAnglesImage.py -h
+    - fmask_sentinel2Stacked.py -h
+    - fmask_usgsLandsatMakeAnglesImage.py -h
+    - fmask_usgsLandsatSaturationMask.py -h
+    - fmask_usgsLandsatStacked.py -h
+    - fmask_usgsLandsatTOA.py -h
 
 about:
   home: http://pythonfmask.org
   license: GPL-3.0
-  # Not present in the tarball - will be in next release.
-  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE.txt'
+  license_file: 'LICENSE.txt'
   summary: Implementation in Python of the cloud and shadow algorithms known collectively as Fmask.
 
 extra:

@@ -10,14 +10,17 @@ source:
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv"
+  script:
+    - set FMASK_NOCMDLINE=1  # [win]
+    - export FMASK_NOCMDLINE=1  # [not win]
+    - "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv"
   entry_points:
-    - fmask_sentinel2makeAnglesImage.py = fmask.cmdline.fmask_sentinel2makeAnglesImage:mainRoutine
-    - fmask_sentinel2Stacked.py = fmask.cmdline.fmask_sentinel2Stacked:mainRoutine
-    - fmask_usgsLandsatMakeAnglesImage.py = fmask.cmdline.fmask_usgsLandsatMakeAnglesImage:mainRoutine
-    - fmask_usgsLandsatSaturationMask.py = fmask.cmdline.fmask_usgsLandsatSaturationMask:mainRoutine
-    - fmask_usgsLandsatStacked.py = fmask.cmdline.fmask_usgsLandsatStacked:mainRoutine
-    - fmask_usgsLandsatTOA.py = fmask.cmdline.fmask_usgsLandsatTOA:mainRoutine
+    - fmask_sentinel2makeAnglesImage.py = fmask.cmdline.sentinel2makeAnglesImage:mainRoutine
+    - fmask_sentinel2Stacked.py = fmask.cmdline.sentinel2Stacked:mainRoutine
+    - fmask_usgsLandsatMakeAnglesImage.py = fmask.cmdline.usgsLandsatMakeAnglesImage:mainRoutine
+    - fmask_usgsLandsatSaturationMask.py = fmask.cmdline.usgsLandsatSaturationMask:mainRoutine
+    - fmask_usgsLandsatStacked.py = fmask.cmdline.usgsLandsatStacked:mainRoutine
+    - fmask_usgsLandsatTOA.py = fmask.cmdline.usgsLandsatTOA:mainRoutine
 
 requirements:
   build:

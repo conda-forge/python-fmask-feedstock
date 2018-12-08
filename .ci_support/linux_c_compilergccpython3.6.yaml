@@ -8,9 +8,13 @@ channel_targets:
 - conda-forge gcc7
 docker_image:
 - condaforge/linux-anvil-comp7
+gdal:
+- '2.3'
 numpy:
 - '1.9'
 pin_run_as_build:
+  gdal:
+    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x

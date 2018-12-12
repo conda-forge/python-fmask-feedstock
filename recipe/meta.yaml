@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://bitbucket.org/chchrsc/python-fmask/downloads/python-fmask-{{ version }}.tar.gz
-  sha256: fc594a2d811a4d7ec4b3971466ef8170d133b5eb637e69d733d259b93a99c416
+  sha256: c33838ed8bec8d9a1d5cb751a186d48dcf886bca304d3b5c72c2dd2ab9ad73f8
 
 build:
   number: 1000

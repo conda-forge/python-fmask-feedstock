@@ -1,4 +1,4 @@
-{% set version = "0.5.1" %}
+{% set version = "0.5.2" %}
 
 package:
   name: python-fmask
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://bitbucket.org/chchrsc/python-fmask/downloads/python-fmask-{{ version }}.tar.gz
-  sha256: 6b774c3fc99f6cd9e13a027e9f18cdafee86f861302c6ebf5b20374e0be6d699
+  sha256: fc594a2d811a4d7ec4b3971466ef8170d133b5eb637e69d733d259b93a99c416
 
 build:
   number: 1000

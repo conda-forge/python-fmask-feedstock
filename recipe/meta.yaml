@@ -1,4 +1,4 @@
-{% set version = "0.5.4" %}
+{% set version = "0.5.5" %}
 
 package:
   name: python-fmask
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/ubarsc/python-fmask/releases/download/pythonfmask-{{ version }}/python-fmask-{{ version }}.tar.gz
-  sha256: ed20776f6b63615f664da89a9e3951c79437b66c2bf88fe19a93c2cc7dc40c82
+  sha256: 8257227d2527ea5fbd229f726d06d05986914beafd090acef05772a27dbbf062
 
 build:
   number: 1
@@ -29,8 +29,7 @@ requirements:
   host:
     - python
     - pip
-    - numpy  # [not win]
-    - numpy 1.14.*  # [win]
+    - numpy
   run:
     - python
     - {{ pin_compatible('numpy') }}

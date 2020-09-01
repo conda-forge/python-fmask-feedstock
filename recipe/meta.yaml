@@ -50,7 +50,7 @@ test:
 
 about:
   home: http://pythonfmask.org
-  license: GPL-3.0
+  license: GPL-3.0-or-later
   license_file: 'LICENSE.txt'
   summary: Implementation in Python of the cloud and shadow algorithms known collectively as Fmask.
 

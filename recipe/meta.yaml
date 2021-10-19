@@ -1,4 +1,4 @@
-{% set version = "0.5.5" %}
+{% set version = "0.5.6" %}
 
 package:
   name: python-fmask
@@ -6,15 +6,15 @@ package:
 
 source:
   url: https://github.com/ubarsc/python-fmask/releases/download/pythonfmask-{{ version }}/python-fmask-{{ version }}.tar.gz
-  sha256: 8257227d2527ea5fbd229f726d06d05986914beafd090acef05772a27dbbf062
+  sha256: a63abd12d36fb4ec010e618bcabd5e2f782a0479ebcbf40aec1bcef943c00c5c
 
 build:
-  number: 1
-  skip: True  # [win and py27]
+  number: 0
+  skip: true  # [win and py27]
   script:
     - set FMASK_NOCMDLINE=1  # [win]
     - export FMASK_NOCMDLINE=1  # [not win]
-    - "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv"
+    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv
   entry_points:
     - fmask_sentinel2makeAnglesImage.py = fmask.cmdline.sentinel2makeAnglesImage:mainRoutine
     - fmask_sentinel2Stacked.py = fmask.cmdline.sentinel2Stacked:mainRoutine
@@ -51,7 +51,7 @@ test:
 about:
   home: http://pythonfmask.org
   license: GPL-3.0-or-later
-  license_file: 'LICENSE.txt'
+  license_file: LICENSE.txt
   summary: Implementation in Python of the cloud and shadow algorithms known collectively as Fmask.
 
 extra:

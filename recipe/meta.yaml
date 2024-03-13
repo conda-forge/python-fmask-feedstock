@@ -1,4 +1,4 @@
-{% set version = "0.5.8" %}
+{% set version = "0.5.9" %}
 
 package:
   name: python-fmask
@@ -6,21 +6,28 @@ package:
 
 source:
   url: https://github.com/ubarsc/python-fmask/releases/download/pythonfmask-{{ version }}/python-fmask-{{ version }}.tar.gz
-  sha256: d55f54d3fecde818374017fdbe0ad173c893ef74c79ba2a7bc1890b7ec416c2f
+  sha256: 7e2875abab87da545d3ec06b9dad704105729977ad1e479a3d9d3b8294c49e44
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win and py<=27]
   script:
     - set FMASK_NOCMDLINE=1  # [win]
     - export FMASK_NOCMDLINE=1  # [not win]
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv
   entry_points:
+    # do both the extension (old) and no extension entry points (new - as per the docs)
+    - fmask_sentinel2makeAnglesImage = fmask.cmdline.sentinel2makeAnglesImage:mainRoutine
     - fmask_sentinel2makeAnglesImage.py = fmask.cmdline.sentinel2makeAnglesImage:mainRoutine
+    - fmask_sentinel2Stacked = fmask.cmdline.sentinel2Stacked:mainRoutine
     - fmask_sentinel2Stacked.py = fmask.cmdline.sentinel2Stacked:mainRoutine
+    - fmask_usgsLandsatMakeAnglesImage = fmask.cmdline.usgsLandsatMakeAnglesImage:mainRoutine
     - fmask_usgsLandsatMakeAnglesImage.py = fmask.cmdline.usgsLandsatMakeAnglesImage:mainRoutine
+    - fmask_usgsLandsatSaturationMask = fmask.cmdline.usgsLandsatSaturationMask:mainRoutine
     - fmask_usgsLandsatSaturationMask.py = fmask.cmdline.usgsLandsatSaturationMask:mainRoutine
+    - fmask_usgsLandsatStacked = fmask.cmdline.usgsLandsatStacked:mainRoutine
     - fmask_usgsLandsatStacked.py = fmask.cmdline.usgsLandsatStacked:mainRoutine
+    - fmask_usgsLandsatTOA = fmask.cmdline.usgsLandsatTOA:mainRoutine
     - fmask_usgsLandsatTOA.py = fmask.cmdline.usgsLandsatTOA:mainRoutine
 
 requirements:
@@ -44,11 +51,17 @@ test:
   imports:
     - fmask.fmask
   commands:
+    - fmask_sentinel2makeAnglesImage -h
     - fmask_sentinel2makeAnglesImage.py -h
+    - fmask_sentinel2Stacked -h
     - fmask_sentinel2Stacked.py -h
+    - fmask_usgsLandsatMakeAnglesImage -h
     - fmask_usgsLandsatMakeAnglesImage.py -h
+    - fmask_usgsLandsatSaturationMask -h
     - fmask_usgsLandsatSaturationMask.py -h
+    - fmask_usgsLandsatStacked -h
     - fmask_usgsLandsatStacked.py -h
+    - fmask_usgsLandsatTOA -h
     - fmask_usgsLandsatTOA.py -h
 
 about:

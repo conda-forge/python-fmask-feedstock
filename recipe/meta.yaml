@@ -1,4 +1,4 @@
-{% set version = "0.5.8" %}
+{% set version = "0.5.9" %}
 
 package:
   name: python-fmask
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://github.com/ubarsc/python-fmask/releases/download/pythonfmask-{{ version }}/python-fmask-{{ version }}.tar.gz
-  sha256: d55f54d3fecde818374017fdbe0ad173c893ef74c79ba2a7bc1890b7ec416c2f
+  sha256: 7e2875abab87da545d3ec06b9dad704105729977ad1e479a3d9d3b8294c49e44
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win and py<=27]
   script:
     - set FMASK_NOCMDLINE=1  # [win]

@@ -9,7 +9,7 @@ source:
   sha256: 7e2875abab87da545d3ec06b9dad704105729977ad1e479a3d9d3b8294c49e44
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win and py<=27]
   script:
     - set FMASK_NOCMDLINE=1  # [win]
@@ -33,6 +33,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
@@ -42,7 +43,6 @@ requirements:
     - numpy
   run:
     - python
-    - {{ pin_compatible('numpy') }}
     - scipy
     - gdal
     - rios

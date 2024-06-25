@@ -9,7 +9,7 @@ source:
   sha256: ff2f95218cfe2b3e72986228d44d3f8d395f7c77f10bfc4434115df859c3d0b7
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win and py<=27]
   script:
     - set FMASK_NOCMDLINE=1  # [win]
